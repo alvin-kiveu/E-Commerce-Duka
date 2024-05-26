@@ -16,6 +16,8 @@ include 'includes/db.php';
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <style>
     .navbar-brand img {
       height: 40px;
@@ -73,7 +75,8 @@ include 'includes/db.php';
       right: 20px;
       z-index: 1080;
     }
-    .card-title a{
+
+    .card-title a {
       text-decoration: none;
       color: black;
     }
@@ -106,10 +109,15 @@ include 'includes/db.php';
           <a class="nav-link" href="products.php">Products List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="cart.php">
             <div class="cart-icon">
               <i class="fas fa-shopping-cart"></i>
-              <span class="cart-badge" id="cart-count">0</span>
+              <?php
+              $num_items_query = mysqli_query($db, "SELECT COUNT(*) as num_items FROM cart_items");
+              $num_items_row = mysqli_fetch_assoc($num_items_query);
+              $num_items = $num_items_row['num_items'];
+              ?>
+              <span class="cart-badge" id="cart-badge"><?php echo $num_items; ?></span>
             </div>
           </a>
         </li>

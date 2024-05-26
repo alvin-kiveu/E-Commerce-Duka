@@ -12,9 +12,10 @@
                         <div class="card-body">
                             <h5 class="card-title"><a href="details.php?product_id=<?php echo $product['product_id']; ?>"><?php echo $product['title']; ?></a></h5>
                             <h6>Ksh <?php echo $product['price']; ?></h6>
-                            <button class="btn btn-outline-success add-to-cart" data-product-id="<?php echo $product['product_id']; ?>">
+                            <button class="btn btn-outline-success add-to-cart" onclick="addToCart('<?php echo $product['product_id']; ?>')">
                                 <i class="fas fa-cart-plus"></i> Add to Cart
                             </button>
+
                         </div>
                     </div>
                 </div>
